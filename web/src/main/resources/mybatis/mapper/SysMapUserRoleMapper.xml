@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.weisi.veems.mapper.sys.SysMapUserRoleMapper" >
+
+	<!-- 根据用户id查询url -->
+	<select id="findRoleIdsByUserId" parameterType="string" resultType="string">
+			SELECT ROLE_ID FROM sys_map_user_role WHERE USER_ID = #{userId}
+	</select>
+
+	<!--用户分配角色-->
+	<insert id="grant">
+		insert into sys_map_user_role(user_id, role_id) values
+		<foreach collection="roleIds" item="role" separator=",">
+			(#{userId}, #{role})
+		</foreach>
+	</insert>
+
+
+</mapper>

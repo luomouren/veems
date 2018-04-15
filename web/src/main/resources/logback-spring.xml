@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration  scan="true" scanPeriod="60 seconds" debug="false">
+    <contextName>logback</contextName>
+    <!--输出到控制台-->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} %contextName [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!--按天生成日志-->
+    <appender name="logFile"  class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <Prudent>true</Prudent>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>
+                log/%d{yyyy-MM-dd}/%d{yyyy-MM-dd}.log
+            </FileNamePattern>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>
+                %d{yyyy-MM-dd HH:mm:ss} -%msg%n
+            </Pattern>
+        </layout>
+    </appender>
+
+    <root level="debug,ERROR">
+        <appender-ref ref="console" />
+        <appender-ref ref="logFile" />
+    </root>
+
+    <!--<loger> 用来设置某一个包或者具体的某一个类的日志打印级别、以及指定 <appender> 。 <loger> 仅有一个 name 属性，一个可选的 level 和一个可选的 addtivity 属性。
+    name :用来指定受此loger约束的某一个包或者具体的某一个类。
+    level :用来设置打印级别，大小写无关：TRACE, DEBUG, INFO, WARN, ERROR, ALL 和 OFF，还有一个特俗值INHERITED或者同义词NULL，代表强制执行上级的级别。如果未设置此属性，那么当前loger将会继承上级的级别。
+    addtivity :是否向上级loger传递打印信息。默认是true。-->
+    <!-- 测试环境+开发环境. 多个使用逗号隔开. -->
+    <springProfile name="test,dev">
+        <logger name="com.xxx" level="DEBUG" additivity="false">
+            <appender-ref ref="console"/>
+            <appender-ref ref="logFile"/>
+        </logger>
+    </springProfile>
+    <!-- 生产环境. -->
+    <springProfile name="prod">
+        <logger name="com.xxx" level="INFO" additivity="false">
+            <appender-ref ref="console"/>
+            <appender-ref ref="logFile"/>
+        </logger>
+    </springProfile>
+
+</configuration>

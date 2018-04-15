@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<!--
+    namespace：必须与对应的接口mapper.java全类名一致
+    id:必须与对应接口mapper.java的某个对应的方法名一致
+ -->
+<mapper namespace="com.weisi.veems.mapper.sys.SysRoleMapper">
+
+    <!--数据库表字段名与models中类属性对应关系-->
+    <resultMap id="BaseResultMap" type="SysRole">
+        <id column="ROLE_ID" property="roleId" jdbcType="VARCHAR"/>
+        <id column="ROLE_NAME" property="roleName" jdbcType="VARCHAR"/>
+        <id column="IS_AVAILABLE" property="isAvailable" jdbcType="TINYINT"/>
+    </resultMap>
+
+</mapper>

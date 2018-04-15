@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<!--
+    namespace：必须与对应的接口mapper.java全类名一致
+    id:必须与对应接口mapper.java的某个对应的方法名一致
+ -->
+<mapper namespace="com.weisi.veems.mapper.sys.SysUserMapper">
+
+    <!--数据库表字段名与models中类属性对应关系-->
+    <resultMap id="BaseResultMap" type="SysUser">
+        <id column="USER_ID" property="userId" jdbcType="VARCHAR"/>
+        <id column="USER_NAME" property="userName" jdbcType="VARCHAR"/>
+        <id column="REAL_NAME" property="realName" jdbcType="VARCHAR"/>
+        <id column="PASSWORD" property="password" jdbcType="VARCHAR"/>
+        <id column="USER_CATEGORY" property="userCategory" jdbcType="INTEGER"/>
+        <id column="POSITION_JOB" property="positionJob" jdbcType="VARCHAR"/>
+        <id column="EMAIL" property="email" jdbcType="VARCHAR"/>
+        <id column="CELLPHONE" property="cellphone" jdbcType="VARCHAR"/>
+        <id column="TEL" property="tel" jdbcType="VARCHAR"/>
+        <id column="SALT" property="salt" jdbcType="VARCHAR"/>
+        <id column="IS_LOCKED" property="isLocked" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <sql id="tableName">
+        sys_user
+    </sql>
+
+    <sql id="baseColumns">
+         USER_ID, USER_NAME, REAL_NAME, PASSWORD,
+         USER_CATEGORY,POSITION_JOB,EMAIL,CELLPHONE,TEL,SALT,IS_LOCKED
+    </sql>
+
+    <!--根据账号查询用户信息-->
+    <select id="findByUserName" resultMap="BaseResultMap">
+        select <include refid="baseColumns"/>
+        from  <include refid="tableName"/>
+        where USER_NAME = #{userName}
+    </select>
+
+
+</mapper>

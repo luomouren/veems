@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>veems</artifactId>
+        <groupId>org.weisi</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>web</artifactId>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <weisi>1.0-SNAPSHOT</weisi>
+        <shiro.version>1.4.0</shiro.version>
+        <webjars-locator>0.33</webjars-locator>
+        <bootstrap>3.3.7</bootstrap>
+        <jquery>3.3.1-1</jquery>
+        <echarts>4.0.4</echarts>
+        <adminlte>2.4.0</adminlte>
+        <font-awesome>4.7.0</font-awesome>
+        <ionicons>4.0.0-9</ionicons>
+        <iCheck>1.0.2</iCheck>
+        <layer>3.1.1</layer>
+        <fastclick>1.0.6</fastclick>
+        <jQuery-slimScroll>1.3.8</jQuery-slimScroll>
+    </properties>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.weisi</groupId>
+            <artifactId>common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <!-- shiro -->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-ehcache</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-core</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+
+        <!--Freemarker shiro -->
+        <dependency>
+            <groupId>net.mingsoft</groupId>
+            <artifactId>shiro-freemarker-tags</artifactId>
+            <version>0.1</version>
+        </dependency>
+
+        <!-- webjars-locator-->
+        <!--webjars-locator 包的作用是省略 webjar 的版本。比如对于请求 http://localhost:8080/webjars/jquery/3.1.0/jquery.js省略版本号 3.2.1 直接使用http://localhost:8080/webjars/jquery/jquery.js也可访问。-->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>webjars-locator</artifactId>
+            <version>${webjars-locator}</version>
+        </dependency>
+
+        <!-- jquery -->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>jquery</artifactId>
+            <version>${jquery}</version>
+        </dependency>
+
+        <!-- bootstrap -->
+        <dependency>
+            <groupId>org.webjars.bower</groupId>
+            <artifactId>bootstrap</artifactId>
+            <version>${bootstrap}</version>
+        </dependency>
+
+        <!-- echarts -->
+        <dependency>
+            <groupId>org.webjars.bower</groupId>
+            <artifactId>echarts</artifactId>
+            <version>${echarts}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>AdminLTE</artifactId>
+            <version>${adminlte}</version>
+        </dependency>
+
+        <!-- font-awesome -->
+        <dependency>
+            <groupId>org.webjars.bower</groupId>
+            <artifactId>font-awesome</artifactId>
+            <version>${font-awesome}</version>
+        </dependency>
+
+        <!-- ionicons -->
+        <dependency>
+            <groupId>org.webjars.npm</groupId>
+            <artifactId>ionicons</artifactId>
+            <version>${ionicons}</version>
+        </dependency>
+
+        <!--iCheck-->
+        <dependency>
+            <groupId>org.webjars.bower</groupId>
+            <artifactId>iCheck</artifactId>
+            <version>${iCheck}</version>
+        </dependency>
+
+        <!--slimScroll,菜单和页面中的滚动条样式-->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>jQuery-slimScroll</artifactId>
+            <version>${jQuery-slimScroll}</version>
+        </dependency>
+
+        <!--FastClick 触摸设备快速点击体验，不想兼容手机可以去掉-->
+        <dependency>
+            <groupId>org.webjars.bower</groupId>
+            <artifactId>fastclick</artifactId>
+            <version>${fastclick}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.webjars.bower</groupId>
+            <artifactId>layer</artifactId>
+            <version>${layer}</version>
+        </dependency>
+
+        <!-- 校验-->
+        <dependency>
+            <groupId>org.webjars.bower</groupId>
+            <artifactId>bootstrapValidator</artifactId>
+            <version>0.5.2</version>
+        </dependency>
+
+        <!--树形结构-->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>zTree</artifactId>
+            <version>3.5.28</version>
+        </dependency>
+
+    </dependencies>
+</project>

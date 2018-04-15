@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.weisi.veems.mapper.sys.SysPermissionMapper" >
+	<!--数据库表字段名与models中类属性对应关系-->
+	<resultMap id="BaseResultMap" type="SysPermission">
+		<id column="PERMISSION_ID" property="permissionId" jdbcType="VARCHAR"/>
+		<id column="PERMISSION_NAME" property="permissionName" jdbcType="VARCHAR"/>
+		<id column="PERMISSION_TYPE" property="permissionType" jdbcType="INTEGER"/>
+		<id column="URL" property="url" jdbcType="VARCHAR"/>
+		<id column="PERCODE" property="percode" jdbcType="VARCHAR"/>
+		<id column="PARENT_PERMISSION_ID" property="parentPermissionId" jdbcType="VARCHAR"/>
+		<id column="SORT" property="sort" jdbcType="INTEGER"/>
+		<id column="IS_AVAILABLE" property="isAvailable" jdbcType="TINYINT"/>
+	</resultMap>
+
+	<!-- 根据用户id查询url -->
+	  <select id="findPermissionListByUserId" parameterType="string" resultMap="BaseResultMap">
+		SELECT
+		  *
+		FROM
+		  sys_permission
+		WHERE  PERMISSION_ID IN
+		(SELECT
+		PERMISSION_ID
+		FROM
+		sys_map_role_permission
+		WHERE ROLE_ID IN
+		(SELECT
+		ROLE_ID
+		FROM
+		sys_map_user_role
+		WHERE USER_ID = #{id}))
+	</select>
+
+	  <!-- 根据用户id查询其权限下所有的menu，并按照sort asc排序-->
+	  <select id="findMenuListByUserId" parameterType="string" resultMap="BaseResultMap">
+		SELECT
+		  *
+		FROM
+		  sys_permission
+		WHERE  PERMISSION_ID IN
+		(SELECT
+		PERMISSION_ID
+		FROM
+		sys_map_role_permission
+		WHERE ROLE_ID IN
+		(SELECT
+		ROLE_ID
+		FROM
+		sys_map_user_role
+		WHERE USER_ID = #{id})) AND (PERMISSION_TYPE = 1 OR PERMISSION_TYPE = 2 ) ORDER BY SORT ASC
+	</select>
+
+	<!-- 根据父节点asc/排序值asc 查询所有的权限 -->
+	<select id="findAllByOrderByParentAscIdAscSortAsc" resultMap="BaseResultMap">
+		SELECT
+		*
+		FROM
+		sys_permission
+		order by PERMISSION_ID asc ,SORT asc
+	</select>
+
+
+</mapper>

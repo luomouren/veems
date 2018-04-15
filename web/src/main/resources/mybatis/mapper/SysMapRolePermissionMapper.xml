@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.weisi.veems.mapper.sys.SysMapRolePermissionMapper" >
+
+
+	<!--角色分配权限-->
+	<insert id="grant">
+		insert into sys_map_role_permission(ROLE_ID, PERMISSION_ID) values
+		<foreach collection="permissionIds" item="permission" separator=",">
+			(#{roleId}, #{permission})
+		</foreach>
+	</insert>
+
+	<!--根据角色id查找所有的权限id-->
+	<select id="findAllPermissionIds" parameterType="string" resultType="string">
+		SELECT PERMISSION_ID FROM  sys_map_role_permission WHERE ROLE_ID= #{roleId}
+	</select>
+
+
+</mapper>
