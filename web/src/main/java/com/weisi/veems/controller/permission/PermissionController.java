@@ -96,8 +96,16 @@ public class PermissionController {
 		}
 		return JsonResult.success();
 	}
-	
-	
+
+	/**
+	 * 无权访问页面时
+	 * @return
+	 */
+	@RequestMapping("/unauthorized")
+	public String unauthorized() {
+		return PAGE_FILE_NAME +"unauthorized";
+	}
+
 }
 
 

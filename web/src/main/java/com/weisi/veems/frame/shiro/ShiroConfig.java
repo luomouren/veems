@@ -96,9 +96,12 @@ public class ShiroConfig {
 
 		ShiroFilterFactoryBean shiroFilter = new ShiroFilterFactoryBean();
 		shiroFilter.setSecurityManager(securityManager);
+		// 登录地址
 		shiroFilter.setLoginUrl("/login");
+		// 登录成功后跳转的地址
 		shiroFilter.setSuccessUrl("/index");
-		shiroFilter.setUnauthorizedUrl("/previlige/no");
+		// 没有权限则跳转到该页面
+		shiroFilter.setUnauthorizedUrl("/permission/unauthorized");
 		Map<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
 		//静态资源不拦截
 		filterChainDefinitionMap.put("/assets/**", "anon");
@@ -108,6 +111,7 @@ public class ShiroConfig {
 
 		List<SysPermission> list = sysPermissonService.selectAll();
 		for (SysPermission permission: list) {
+			// org.apache.shiro.web.filter.authz.PermissionsAuthorizationFilter
 			filterChainDefinitionMap.put(permission.getUrl(), "perms[" + permission.getPercode() + "]");
 		}
 		// 其他资源全部拦截
