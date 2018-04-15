@@ -28,8 +28,15 @@
 
 
 ##### 测试地址
-Bootstrap：http://localhost:8080/test/bootstrap
-echarts：http://localhost:8080/test/echarts
-Druid:http://localhost:8080/druid/   用户名:admin 密码:admin
-Shiro 账号登录测试：http://localhost:8080/login  账号lisi 密码111111
-完成模块：用户管理、角色管理、权限管理
+* 初始化sql：biaozhunhua_init.sql
+*  Bootstrap：http://localhost:8080/test/bootstrap
+*  echarts：http://localhost:8080/test/echarts
+*  Druid:http://localhost:8080/druid/   用户名:admin 密码:admin 
+*  shiro 账号登录测试：http://localhost:8080/login  账号lisi 密码111111
+*  完成模块：用户管理、角色管理、权限管理
+*  演示图片：
+![输入图片说明](https://github.com/luomouren/veems/blob/master/web/src/main/resources/static/assets/img/screenshot/login.png "登录")
+![输入图片说明](https://github.com/luomouren/veems/blob/master/web/src/main/resources/static/assets/img/screenshot/home.png "主页")
+![输入图片说明](https://github.com/luomouren/veems/blob/master/web/src/main/resources/static/assets/img/screenshot/user.png "用户")
+![输入图片说明](https://github.com/luomouren/veems/blob/master/web/src/main/resources/static/assets/img/screenshot/role.png "角色")
+![输入图片说明](https://github.com/luomouren/veems/blob/master/web/src/main/resources/static/assets/img/screenshot/permission.png "权限")
